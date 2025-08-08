@@ -1,4 +1,4 @@
-# Bugify - Test Cases
+# Buggyfy - Test Cases
 
 ## Test Case Documentation
 

@@ -1,8 +1,8 @@
-# Bugify - QA Testing Demo App
+# Buggyfy - QA Testing Demo App
 
-## 🐛 About Bugify
+## 🐛 About Buggyfy
 
-Bugify is an intentionally buggy to-do manager application designed to showcase QA testing skills and methodologies. This app contains **8 carefully crafted bugs** that demonstrate various types of issues commonly found in web applications.
+Buggyfy is an intentionally buggy to-do manager application designed to showcase QA testing skills and methodologies. This app contains **8 carefully crafted bugs** that demonstrate various types of issues commonly found in web applications.
 
 ## 🎯 Purpose
 

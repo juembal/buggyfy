@@ -1,4 +1,4 @@
-# Bugify - Test Plan
+# Buggyfy - Test Plan
 
 ## 1. Test Plan Overview
 

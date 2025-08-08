@@ -1,4 +1,4 @@
-# 🐛 Bugify - Enhanced QA Skills Showcase
+# 🐛 Buggyfy - Enhanced QA Skills Showcase
 
 ## 🎯 What Makes This App Stand Out for QA Professionals
 

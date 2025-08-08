@@ -1,7 +1,7 @@
-// Bugify - QA Testing Demo App JavaScript
+// Buggyfy - QA Testing Demo App JavaScript
 // This file contains intentional bugs for QA testing demonstration
 
-class BugifyApp {
+class BuggyfyApp {
     constructor() {
         this.tasks = [];
         this.currentFilter = 'all';
@@ -361,7 +361,7 @@ class BugifyApp {
 
 // Initialize the app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    window.app = new BugifyApp();
+    window.app = new BuggyfyApp();
     setupQAFeatures();
 });
 
