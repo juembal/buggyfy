@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bugify - QA Testing Demo App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1><i class="fas fa-bug"></i> Bugify</h1>
+            <p class="subtitle">QA Testing Demo - To-Do Manager</p>
+            
+            <!-- QA Banner -->
+            <div class="qa-banner">
+                <i class="fas fa-vial"></i>
+                <span>This app is intentionally buggy to showcase QA testing skills</span>
+                <button id="exploreAsQA" class="btn btn-accent">
+                    <i class="fas fa-search"></i> Explore as QA Tester
+                </button>
+            </div>
+            
+            <div class="header-controls">
+                <div class="testing-mode-toggle">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="testingMode">
+                        <span class="slider"></span>
+                        <span class="toggle-label">🐛 QA Testing Mode</span>
+                    </label>
+                </div>
+                <button id="qaPanel" class="btn btn-secondary">
+                    <i class="fas fa-chart-bar"></i> QA Dashboard
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Add Task Section -->
+            <section class="add-task-section">
+                <h2>Add New Task</h2>
+                <form id="addTaskForm" class="task-form">
+                    <div class="form-group">
+                        <label for="taskTitle">Task Title:</label>
+                        <input type="text" id="taskTitle" placeholder="Enter task title...">
+                        <span class="bug-indicator" data-bug="blank-title">🐛 Bug: Allows blank titles</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDueDate">Due Date (optional):</label>
+                        <input type="text" id="taskDueDate" placeholder="YYYY-MM-DD">
+                        <span class="bug-indicator" data-bug="invalid-date">🐛 Bug: Accepts invalid date formats</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Task</button>
+                </form>
+            </section>
+
+            <!-- Filter and Sort Controls -->
+            <section class="controls-section">
+                <div class="filters">
+                    <h3>Filter Tasks:</h3>
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="pending">Pending</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                    <span class="bug-indicator" data-bug="filter-bug">🐛 Bug: Completed filter shows wrong tasks</span>
+                </div>
+                <div class="sorting">
+                    <h3>Sort By:</h3>
+                    <select id="sortBy">
+                        <option value="name">Name</option>
+                        <option value="date">Due Date</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Tasks List -->
+            <section class="tasks-section">
+                <h2>Your Tasks</h2>
+                <div id="tasksList" class="tasks-list">
+                    <!-- Tasks will be dynamically added here -->
+                </div>
+                <div id="emptyState" class="empty-state">
+                    <i class="fas fa-clipboard-list"></i>
+                    <p>No tasks yet. Add your first task above!</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Edit Task Modal -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit Task</h2>
+                <form id="editTaskForm">
+                    <div class="form-group">
+                        <label for="editTaskTitle">Task Title:</label>
+                        <input type="text" id="editTaskTitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="editTaskDueDate">Due Date:</label>
+                        <input type="text" id="editTaskDueDate" placeholder="YYYY-MM-DD">
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="button" class="btn btn-secondary" id="cancelEdit">Cancel</button>
+                    </div>
+                    <span class="bug-indicator" data-bug="edit-bug">🐛 Bug: Edits don't save on first try</span>
+                </form>
+            </div>
+        </div>
+
+        <!-- QA Dashboard Panel -->
+        <div id="qaDashboard" class="qa-dashboard">
+            <div class="qa-header">
+                <h3><i class="fas fa-chart-bar"></i> QA Testing Dashboard</h3>
+                <button id="closeDashboard" class="close-btn">&times;</button>
+            </div>
+            
+            <div class="dashboard-content">
+                <!-- Test Statistics -->
+                <div class="test-stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-bug"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="bugCount">8</span>
+                            <span class="stat-label">Known Bugs</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-clipboard-check"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value">25</span>
+                            <span class="stat-label">Test Cases</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-robot"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value">3/5</span>
+                            <span class="stat-label">Automated</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-percentage"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label">Coverage</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Test Status -->
+                <div class="test-status-section">
+                    <h4><i class="fas fa-tasks"></i> Feature Test Status</h4>
+                    <div class="test-status-list">
+                        <div class="test-item passed">
+                            <span class="test-name">Add Task</span>
+                            <span class="test-result"><i class="fas fa-check"></i> Passed</span>
+                        </div>
+                        <div class="test-item failed">
+                            <span class="test-name">Edit Task</span>
+                            <span class="test-result"><i class="fas fa-times"></i> Known Bug: Doesn't save on first try</span>
+                        </div>
+                        <div class="test-item passed">
+                            <span class="test-name">Mark Complete</span>
+                            <span class="test-result"><i class="fas fa-check"></i> Passed</span>
+                        </div>
+                        <div class="test-item failed">
+                            <span class="test-name">Filter Tasks</span>
+                            <span class="test-result"><i class="fas fa-times"></i> Bug: Completed shows wrong items</span>
+                        </div>
+                        <div class="test-item warning">
+                            <span class="test-name">Delete Task</span>
+                            <span class="test-result"><i class="fas fa-exclamation-triangle"></i> Intermittent: Wrong task deleted</span>
+                        </div>
+                        <div class="test-item failed">
+                            <span class="test-name">Input Validation</span>
+                            <span class="test-result"><i class="fas fa-times"></i> Bug: Accepts blank titles</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bug List -->
+                <div class="bug-list-section">
+                    <h4><i class="fas fa-bug"></i> Intentional Bugs for Testing</h4>
+                    <div class="bug-list">
+                        <div class="bug-item critical">
+                            <span class="bug-severity">CRITICAL</span>
+                            <span class="bug-desc">Delete removes wrong task occasionally</span>
+                            <span class="bug-id">#BUG-003</span>
+                        </div>
+                        <div class="bug-item high">
+                            <span class="bug-severity">HIGH</span>
+                            <span class="bug-desc">Edit doesn't save on first attempt</span>
+                            <span class="bug-id">#BUG-002</span>
+                        </div>
+                        <div class="bug-item high">
+                            <span class="bug-severity">HIGH</span>
+                            <span class="bug-desc">Filter shows incorrect results</span>
+                            <span class="bug-id">#BUG-005</span>
+                        </div>
+                        <div class="bug-item medium">
+                            <span class="bug-severity">MEDIUM</span>
+                            <span class="bug-desc">Allows blank task titles</span>
+                            <span class="bug-id">#BUG-001</span>
+                        </div>
+                        <div class="bug-item medium">
+                            <span class="bug-severity">MEDIUM</span>
+                            <span class="bug-desc">Complete status delayed on mobile</span>
+                            <span class="bug-id">#BUG-004</span>
+                        </div>
+                        <div class="bug-item medium">
+                            <span class="bug-severity">MEDIUM</span>
+                            <span class="bug-desc">UI breaks on small screens</span>
+                            <span class="bug-id">#BUG-006</span>
+                        </div>
+                        <div class="bug-item medium">
+                            <span class="bug-severity">MEDIUM</span>
+                            <span class="bug-desc">Tab navigation skips buttons</span>
+                            <span class="bug-id">#BUG-007</span>
+                        </div>
+                        <div class="bug-item low">
+                            <span class="bug-severity">LOW</span>
+                            <span class="bug-desc">Invalid date input accepted</span>
+                            <span class="bug-id">#BUG-008</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Download Section -->
+                <div class="download-section">
+                    <h4><i class="fas fa-download"></i> QA Documentation</h4>
+                    <div class="download-buttons">
+                        <button class="btn btn-outline" onclick="downloadTestPlan()">
+                            <i class="fas fa-file-alt"></i> Test Plan PDF
+                        </button>
+                        <button class="btn btn-outline" onclick="downloadTestCases()">
+                            <i class="fas fa-clipboard-list"></i> Test Cases PDF
+                        </button>
+                        <button class="btn btn-outline" onclick="downloadBugReport()">
+                            <i class="fas fa-bug"></i> Bug Report PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QA Walkthrough Modal -->
+        <div id="qaWalkthrough" class="modal qa-walkthrough">
+            <div class="modal-content">
+                <div class="walkthrough-header">
+                    <h2><i class="fas fa-route"></i> QA Testing Walkthrough</h2>
+                    <span class="close" id="closeWalkthrough">&times;</span>
+                </div>
+                <div class="walkthrough-content">
+                    <p class="walkthrough-intro">
+                        Welcome! This app contains <strong>8 intentional bugs</strong> to demonstrate QA testing skills. 
+                        Follow this checklist to explore like a professional QA tester:
+                    </p>
+                    
+                    <div class="test-checklist">
+                        <h3><i class="fas fa-clipboard-check"></i> Testing Checklist</h3>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="test1">
+                            <label for="test1">
+                                <strong>Test 1:</strong> Try adding a task with an empty title
+                                <span class="expected">Expected: Should show validation error</span>
+                            </label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="test2">
+                            <label for="test2">
+                                <strong>Test 2:</strong> Add a task, then edit it immediately
+                                <span class="expected">Expected: Edit should save on first try</span>
+                            </label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="test3">
+                            <label for="test3">
+                                <strong>Test 3:</strong> Create multiple tasks, mark some complete, then filter by "Completed"
+                                <span class="expected">Expected: Should only show completed tasks</span>
+                            </label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="test4">
+                            <label for="test4">
+                                <strong>Test 4:</strong> Try deleting tasks multiple times
+                                <span class="expected">Expected: Should delete the correct task every time</span>
+                            </label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="test5">
+                            <label for="test5">
+                                <strong>Test 5:</strong> Enter invalid date formats (e.g., "abc", "99/99/99")
+                                <span class="expected">Expected: Should validate date format</span>
+                            </label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="test6">
+                            <label for="test6">
+                                <strong>Test 6:</strong> Test on mobile device or resize window to very small
+                                <span class="expected">Expected: UI should remain usable</span>
+                            </label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="test7">
+                            <label for="test7">
+                                <strong>Test 7:</strong> Navigate using only Tab key and Enter
+                                <span class="expected">Expected: Should be able to access all interactive elements</span>
+                            </label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="test8">
+                            <label for="test8">
+                                <strong>Test 8:</strong> Mark tasks complete on mobile device
+                                <span class="expected">Expected: Visual feedback should be immediate</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="bug-reporting">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Found a Bug?</h3>
+                        <p>Click the button below to report any issues you discover:</p>
+                        <button class="btn btn-primary" onclick="openBugReport()">
+                            <i class="fas fa-bug"></i> Report Bug
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bug Report Modal -->
+        <div id="bugReportModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-bug"></i> Bug Report Form</h2>
+                    <span class="close" id="closeBugReport">&times;</span>
+                </div>
+                <form id="bugReportForm" class="bug-report-form">
+                    <div class="form-group">
+                        <label for="bugTitle">Bug Title:</label>
+                        <input type="text" id="bugTitle" placeholder="Brief description of the issue">
+                    </div>
+                    <div class="form-group">
+                        <label for="bugSeverity">Severity:</label>
+                        <select id="bugSeverity">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                            <option value="critical">Critical</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bugSteps">Steps to Reproduce:</label>
+                        <textarea id="bugSteps" placeholder="1. Go to...&#10;2. Click on...&#10;3. Observe..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="bugExpected">Expected Result:</label>
+                        <textarea id="bugExpected" placeholder="What should happen?"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="bugActual">Actual Result:</label>
+                        <textarea id="bugActual" placeholder="What actually happened?"></textarea>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="submit" class="btn btn-primary">Submit Bug Report</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeBugReportModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Mini Test Dashboard (Floating) -->
+        <div id="miniDashboard" class="mini-dashboard">
+            <div class="mini-header">
+                <span><i class="fas fa-vial"></i> Test Dashboard</span>
+                <button id="toggleMini" class="toggle-mini">−</button>
+            </div>
+            <div class="mini-content">
+                <div class="mini-test-item">
+                    <span class="test-name">Add Task</span>
+                    <span class="status passed"><i class="fas fa-check"></i></span>
+                </div>
+                <div class="mini-test-item">
+                    <span class="test-name">Edit Task</span>
+                    <span class="status failed" title="Known bug: doesn't save on first try"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="mini-test-item">
+                    <span class="test-name">Mark Complete</span>
+                    <span class="status passed"><i class="fas fa-check"></i></span>
+                </div>
+                <div class="mini-test-item">
+                    <span class="test-name">Filter</span>
+                    <span class="status failed" title="Bug: Completed shows wrong items"><i class="fas fa-times"></i></span>
+                </div>
+                <div class="mini-test-item">
+                    <span class="test-name">Delete</span>
+                    <span class="status warning" title="Intermittent: Wrong task deleted"><i class="fas fa-exclamation-triangle"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

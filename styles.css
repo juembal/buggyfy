@@ -1,0 +1,1083 @@
+/* Bugify - QA Testing Demo App Styles */
+
+/* QA Banner */
+.qa-banner {
+    background: rgba(255, 215, 0, 0.15);
+    border: 2px solid #ffd700;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.qa-banner i {
+    color: #ffd700;
+    font-size: 1.2rem;
+}
+
+.qa-banner span {
+    font-weight: 500;
+    flex: 1;
+    min-width: 200px;
+}
+
+.btn.btn-accent {
+    background: #ffd700;
+    color: #333;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn.btn-accent:hover {
+    background: #ffed4e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+/* Header Controls */
+.header-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Enhanced Toggle Switch */
+.toggle-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.toggle-switch:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.toggle-switch input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: relative;
+    width: 50px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 24px;
+    transition: 0.3s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+input:checked + .slider {
+    background-color: #ffd700;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.toggle-label {
+    font-weight: 500;
+}
+
+.btn.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+.app-header {
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.app-header h1 {
+    font-size: 2.5rem;
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.app-header h1 i {
+    margin-right: 15px;
+    color: #e74c3c;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.testing-mode-toggle {
+    display: inline-block;
+    background: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 2px solid #667eea;
+}
+
+.testing-mode-toggle label {
+    cursor: pointer;
+    font-weight: 600;
+    color: #667eea;
+}
+
+.testing-mode-toggle input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.2);
+}
+
+/* Main Content */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+/* Section Styles */
+section {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+section h2 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+section h3 {
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+/* Form Styles */
+.task-form {
+    display: grid;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.form-group input {
+    padding: 12px 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* Button Styles */
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* BUG: Tab navigation issue - missing proper tabindex */
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #5a6fd8;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-success {
+    background: #27ae60;
+    color: white;
+}
+
+/* Controls Section */
+.controls-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 2px solid #667eea;
+    background: white;
+    color: #667eea;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: #667eea;
+    color: white;
+}
+
+.sorting select {
+    padding: 10px 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: white;
+}
+
+/* Tasks List */
+.tasks-list {
+    display: grid;
+    gap: 15px;
+}
+
+.task-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 15px;
+    align-items: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    transition: all 0.3s ease;
+}
+
+.task-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.task-item.completed {
+    opacity: 0.7;
+    border-left-color: #27ae60;
+}
+
+.task-item.completed .task-title {
+    text-decoration: line-through;
+    color: #666;
+}
+
+.task-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.task-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.task-due-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.task-actions .btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.close:hover {
+    color: #000;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Bug Indicators */
+.bug-indicator {
+    display: none;
+    background: #ffe6e6;
+    color: #d63031;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    border: 1px solid #fab1a0;
+}
+
+.testing-mode .bug-indicator {
+    display: block;
+}
+
+/* Testing Panel */
+.testing-panel {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    z-index: 999;
+    border: 3px solid #e74c3c;
+}
+
+.testing-mode .testing-panel {
+    display: block;
+}
+
+.test-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat {
+    text-align: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.bug-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.bug-list li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Responsive Design - INTENTIONAL BUGS */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .controls-section {
+        /* BUG: Layout breaks on small screens */
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .task-item {
+        /* BUG: Grid layout breaks on mobile */
+        grid-template-columns: auto 1fr;
+        gap: 5px;
+    }
+    
+    .task-actions {
+        /* BUG: Buttons overlap on mobile - but still visible */
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+    
+    .modal-content {
+        margin: 20% auto;
+        width: 95%;
+        padding: 15px;
+    }
+    
+    /* BUG: Testing panel overlaps content on mobile */
+    .testing-panel {
+        position: relative;
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    /* BUG: Text becomes unreadable on very small screens */
+    .task-title {
+        font-size: 0.8rem;
+    }
+    
+    .btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* QA Dashboard Styles */
+.qa-dashboard {
+    position: fixed;
+    top: 0;
+    right: -500px;
+    width: 480px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.qa-dashboard.active {
+    right: 0;
+}
+
+.qa-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.qa-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.dashboard-content {
+    padding: 1.5rem;
+}
+
+/* Test Statistics Grid */
+.test-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    background: #667eea;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-card .stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    line-height: 1;
+}
+
+.stat-card .stat-label {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.2rem;
+}
+
+/* Test Status Section */
+.test-status-section {
+    margin-bottom: 2rem;
+}
+
+.test-status-section h4 {
+    margin: 0 0 1rem 0;
+    color: #333;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.test-status-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.test-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.test-item.passed {
+    background: #d4edda;
+    border-left: 4px solid #28a745;
+}
+
+.test-item.failed {
+    background: #f8d7da;
+    border-left: 4px solid #dc3545;
+}
+
+.test-item.warning {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+}
+
+.test-name {
+    font-weight: 500;
+}
+
+.test-result {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+}
+
+/* Bug List Section */
+.bug-list-section {
+    margin-bottom: 2rem;
+}
+
+.bug-list-section h4 {
+    margin: 0 0 1rem 0;
+    color: #333;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.bug-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.bug-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background: #f8f9fa;
+    font-size: 0.85rem;
+}
+
+.bug-severity {
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.7rem;
+    min-width: 60px;
+    text-align: center;
+}
+
+.bug-item.critical .bug-severity {
+    background: #dc3545;
+    color: white;
+}
+
+.bug-item.high .bug-severity {
+    background: #fd7e14;
+    color: white;
+}
+
+.bug-item.medium .bug-severity {
+    background: #ffc107;
+    color: #333;
+}
+
+.bug-item.low .bug-severity {
+    background: #6c757d;
+    color: white;
+}
+
+.bug-desc {
+    flex: 1;
+}
+
+.bug-id {
+    color: #666;
+    font-family: monospace;
+    font-size: 0.75rem;
+}
+
+/* Download Section */
+.download-section h4 {
+    margin: 0 0 1rem 0;
+    color: #333;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.download-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.btn.btn-outline {
+    background: transparent;
+    border: 2px solid #667eea;
+    color: #667eea;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn.btn-outline:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* QA Walkthrough Modal */
+.qa-walkthrough .modal-content {
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.walkthrough-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #667eea;
+}
+
+.walkthrough-header h2 {
+    color: #667eea;
+    margin: 0;
+}
+
+.walkthrough-intro {
+    background: #e3f2fd;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #2196f3;
+}
+
+.test-checklist {
+    margin-bottom: 2rem;
+}
+
+.test-checklist h3 {
+    color: #333;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checklist-item {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.checklist-item input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: scale(1.2);
+}
+
+.checklist-item label {
+    cursor: pointer;
+    display: block;
+}
+
+.expected {
+    display: block;
+    font-style: italic;
+    color: #666;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.bug-reporting {
+    background: #fff3cd;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #ffc107;
+}
+
+.bug-reporting h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Bug Report Modal */
+.bug-report-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.bug-report-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.bug-report-form input,
+.bug-report-form select,
+.bug-report-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.bug-report-form input:focus,
+.bug-report-form select:focus,
+.bug-report-form textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.bug-report-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Mini Dashboard (Floating) */
+.mini-dashboard {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    min-width: 250px;
+    border: 2px solid #667eea;
+}
+
+.mini-header {
+    background: #667eea;
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.toggle-mini {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.2rem;
+    border-radius: 3px;
+    transition: background 0.3s ease;
+}
+
+.toggle-mini:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mini-content {
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.mini-content.collapsed {
+    display: none;
+}
+
+.mini-test-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.85rem;
+}
+
+.mini-test-item:last-child {
+    border-bottom: none;
+}
+
+.mini-test-item .test-name {
+    font-weight: 500;
+}
+
+.mini-test-item .status {
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+.mini-test-item .status.passed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.mini-test-item .status.failed {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.mini-test-item .status.warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Modal Enhancements */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #667eea;
+}
+
+.modal-header h2 {
+    color: #667eea;
+    margin: 0;
+}
+
+/* Responsive Enhancements for QA Features */
+@media (max-width: 768px) {
+    .qa-dashboard {
+        width: 100%;
+        right: -100%;
+    }
+    
+    .qa-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .header-controls {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .test-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .mini-dashboard {
+        left: 10px;
+        right: 10px;
+        min-width: auto;
+    }
+    
+    .qa-walkthrough .modal-content {
+        margin: 5% auto;
+        width: 95%;
+    }
+}
