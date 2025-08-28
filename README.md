@@ -141,7 +141,7 @@ This project is created for educational and portfolio purposes. Feel free to use
 
 ---
 
-**Created by**: [Your Name]  
+**Created by**: Jose Emmanuel Balingit
 **Purpose**: QA Testing Portfolio Demonstration  
-**Date**: January 2024  
+**Date**: August 2025
 **Version**: 1.0
